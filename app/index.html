@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Observability Dashboard</title>
+  <style>
+    body { font-family: sans-serif; max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { border-bottom: 2px solid #333; padding-bottom: .5rem; }
+    h2 { margin-top: 2rem; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: .4rem .8rem; text-align: left; }
+    th { background: #f5f5f5; }
+    .stat { font-size: 1.4rem; font-weight: bold; }
+    input[type="text"] { padding: .3rem .6rem; width: 240px; }
+    button { padding: .3rem .8rem; margin-left: .4rem; cursor: pointer; }
+    .empty-row td { color: #888; font-style: italic; }
+  </style>
+</head>
+<body>
+  <h1>Observability Dashboard</h1>
+
+  <section data-testid="tool-calls">
+    <h2>Tool Calls</h2>
+    <table id="tool-calls-table">
+      <thead>
+        <tr>
+          <th>Timestamp</th>
+          <th>Tool</th>
+          <th>Input</th>
+          <th>Output</th>
+          <th>Latency (ms)</th>
+        </tr>
+      </thead>
+      <tbody id="tool-calls-body">
+        <tr class="empty-row"><td colspan="5">No tool calls recorded.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section data-testid="latency">
+    <h2>Latency</h2>
+    <p>Average: <span id="avg-latency" data-testid="avg-latency" class="stat">--</span> ms</p>
+    <p>P95:     <span id="p95-latency" data-testid="p95-latency" class="stat">--</span> ms</p>
+  </section>
+
+  <section data-testid="filters">
+    <h2>Filters</h2>
+    <label for="tool-filter">Tool name:</label>
+    <input
+      id="tool-filter"
+      data-testid="tool-filter"
+      type="text"
+      placeholder="Filter by tool name…"
+    />
+    <button id="apply-filter" data-testid="apply-filter">Apply</button>
+    <button id="clear-filter" data-testid="clear-filter">Clear</button>
+  </section>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "agent-observability-verification-practice",
+  "version": "1.0.0",
+  "description": "Practice: Verification subagent + observability config",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0"
+  }
+}

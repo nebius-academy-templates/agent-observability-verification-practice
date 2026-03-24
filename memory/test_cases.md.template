@@ -1,0 +1,19 @@
+---
+name: test_cases
+description: Tracks generated E2E test case IDs per ticket to prevent duplicates across sessions.
+type: project
+---
+
+# Generated Test Cases
+
+## Rules
+
+[TODO: Add the "no duplicate test cases" rule here.
+Example: "Never generate a test case whose ID (TC-XX) already appears in the table below.
+Always pass the existing IDs to the subagent before generating new tests."]
+
+## Ticket #3 — Add Observability
+
+| Test ID | Title | Generated at |
+|---------|-------|--------------|
+| _(none yet)_ | | |

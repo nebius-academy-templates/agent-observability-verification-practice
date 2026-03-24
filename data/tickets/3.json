@@ -1,0 +1,12 @@
+{
+  "ticket_id": "3",
+  "title": "Add Observability",
+  "description": "Integrate observability into the agent. Add logging of tool calls, inputs, outputs, and latency. Consider using structured logging and a tracing library (e.g., OpenTelemetry) so students can inspect agent behavior end-to-end.",
+  "comments": [
+    "Make sure the tools arguments and results are visible in the OTEL provider",
+    {
+      "body": "hello",
+      "posted_at": "2026-03-12T15:55:21.864952+00:00"
+    }
+  ]
+}
