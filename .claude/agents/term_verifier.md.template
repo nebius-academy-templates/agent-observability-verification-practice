@@ -18,7 +18,7 @@ It should: extract key terms from the ticket description, read the test file, ch
 ## Input
 You receive a prompt containing:
 - `ticket_description` — the full description of the ticket
-- `test_file_path` — path to the generated Playwright spec file (e.g. `tests/e2e/generated.spec.ts`)
+- `test_file_path` — path to the generated Playwright spec file (e.g. `agent_tests/e2e/generated.spec.ts`)
 
 ## What to do
 [TODO: Describe the key-term extraction and matching logic.
