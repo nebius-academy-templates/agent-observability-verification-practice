@@ -24,7 +24,7 @@ agent-observability-verification-practice/
 ├── skills/
 │   ├── get_ticket/get_ticket.py
 │   └── post_comment/post_comment.py
-├── tests/
+├── agent_tests/
 │   └── e2e/                                 ← generated spec goes here
 ├── CLAUDE.md                                ← orchestrator (already complete)
 ├── playwright.config.ts
@@ -115,7 +115,7 @@ Send the ticket ID:
 
 Confirm the agent:
 - fetches ticket #3
-- invokes `e2e_test_generator` and writes `tests/e2e/generated.spec.ts` with ≥ 5 tests
+- invokes `e2e_test_generator` and writes `agent_tests/e2e/generated.spec.ts` with ≥ 5 tests
 - invokes `term_verifier` and shows the coverage report
 - updates `memory/test_cases.md`
 - **waits** — does not call `post_comment`
@@ -153,7 +153,7 @@ All tests must pass.
 - [ ] `.claude/agents/term_verifier.md` exists with all `[TODO]` sections filled in
 - [ ] `observability/otel.env.example` exists (placeholders only, no secrets)
 - [ ] `memory/test_cases.md` exists with a "no duplicate test cases" rule
-- [ ] `tests/e2e/generated.spec.ts` exists with ≥ 5 test cases
+- [ ] `agent_tests/e2e/generated.spec.ts` exists with ≥ 5 test cases
 - [ ] `npx playwright test` exits green
 - [ ] `evidence/observability.png` exists (trace evidence)
 - [ ] `observability/NOTES.md` exists (3 short observations)
