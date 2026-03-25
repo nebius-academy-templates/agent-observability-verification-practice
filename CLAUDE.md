@@ -28,7 +28,7 @@ The workflow starts when the user sends a bare ticket ID — for example `#3` or
   Pass in the prompt:
   - ticket `title`, `description`, and `comments`
   - list of test IDs already in memory (so the subagent avoids duplicates)
-  - instruction to write the file to `tests/e2e/generated.spec.ts`
+  - instruction to write the file to `agent_tests/e2e/generated.spec.ts`
 
   Wait for the subagent to complete before proceeding.
 
@@ -36,7 +36,7 @@ The workflow starts when the user sends a bare ticket ID — for example `#3` or
 
   Pass in the prompt:
   - ticket `description`
-  - path to the generated test file: `tests/e2e/generated.spec.ts`
+  - path to the generated test file: `agent_tests/e2e/generated.spec.ts`
 
   Wait for the subagent to complete before proceeding.
 
@@ -49,10 +49,10 @@ The workflow starts when the user sends a bare ticket ID — for example `#3` or
 1. **Fetch the ticket** — run `get_ticket` with the provided ticket ID. Read `title`, `description`, and all `comments`.
 2. **Check memory** — read `memory/test_cases.md` (if it exists). Extract any test IDs already recorded for this ticket to pass to the subagent as `existing_test_ids`.
 3. **Guard: e2e_test_generator exists** — verify `.claude/agents/e2e_test_generator.md` exists. If it does not, stop and tell the user: "The e2e_test_generator subagent is not configured. Please ensure `.claude/agents/e2e_test_generator.md` exists."
-4. **Invoke e2e_test_generator** — use the Agent tool (`subagent_type: "e2e_test_generator"`) with the ticket context and `existing_test_ids`. The subagent writes `tests/e2e/generated.spec.ts`.
-5. **Review generated tests** — read `tests/e2e/generated.spec.ts`. Confirm it contains at least 5 `test(` declarations.
+4. **Invoke e2e_test_generator** — use the Agent tool (`subagent_type: "e2e_test_generator"`) with the ticket context and `existing_test_ids`. The subagent writes `agent_tests/e2e/generated.spec.ts`.
+5. **Review generated tests** — read `agent_tests/e2e/generated.spec.ts`. Confirm it contains at least 5 `test(` declarations.
 6. **Guard: term_verifier exists** — verify `.claude/agents/term_verifier.md` exists. If it does not, skip step 7 and note "term_verifier not configured — skipping coverage check" in the output.
-7. **Invoke term_verifier** — use the Agent tool (`subagent_type: "term_verifier"`) with the ticket `description` and the path `tests/e2e/generated.spec.ts`. Include the returned coverage report in the output.
+7. **Invoke term_verifier** — use the Agent tool (`subagent_type: "term_verifier"`) with the ticket `description` and the path `agent_tests/e2e/generated.spec.ts`. Include the returned coverage report in the output.
 8. **Update memory** — append the newly generated test IDs and titles to `memory/test_cases.md` under the ticket's section.
 9. **Present results** — show the summary table and coverage report (see Output format). End with the review prompt.
 10. **Wait for human review** — do NOT call `post_comment`. Wait for the user's response.
@@ -66,7 +66,7 @@ After step 9, present:
 ```
 ## Generated E2E Tests — [Ticket Title] (#[ticket_id])
 
-File: tests/e2e/generated.spec.ts
+File: agent_tests/e2e/generated.spec.ts
 Tests generated: [N]
 
 | # | Test name |
