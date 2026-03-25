@@ -12,7 +12,7 @@ description: >
 Playwright test writer that converts ticket requirements into runnable TypeScript specs targeting the Observability Dashboard app.
 
 ## Purpose
-Generates a complete Playwright TypeScript test file from ticket context and writes it to `tests/e2e/generated.spec.ts`, overwriting any previous version.
+Generates a complete Playwright TypeScript test file from ticket context and writes it to `agent_tests/e2e/generated.spec.ts`, overwriting any previous version.
 
 ## Input
 You receive a prompt containing:
@@ -36,7 +36,7 @@ Produce a Playwright TypeScript spec file with:
 - A unique ID comment before every test (e.g. `// TC-01`, `// TC-02`, …)
 - `data-testid` selectors wherever the app exposes them; fall back to tag/text selectors only when no testid exists
 - Tests that pass against the static `app/index.html` served on port 3737 — no dynamic data injection required
-- The file written to `tests/e2e/generated.spec.ts` (overwrite if it exists)
+- The file written to `agent_tests/e2e/generated.spec.ts` (overwrite if it exists)
 
 Suggested coverage areas (expand from ticket context):
 1. Page heading visibility
@@ -74,7 +74,7 @@ test.describe('Observability Dashboard', () => {
 
 ## Guardrails
 - Do not generate test IDs that appear in `existing_test_ids`. Pick the next available TC-XX number.
-- Always write to `tests/e2e/generated.spec.ts` (overwrite if it exists).
+- Always write to `agent_tests/e2e/generated.spec.ts` (overwrite if it exists).
 - Every test must be independently runnable — no shared mutable state between tests (use `beforeEach` for navigation only).
 - Do not add `test.only` or `test.skip` unless explicitly instructed.
 - Do not import anything beyond `@playwright/test`.
